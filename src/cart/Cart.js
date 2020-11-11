@@ -2,6 +2,7 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import CartItem from './CartItem'
 
+
 const useStyles = createUseStyles({
     cartTitle: {
         fontSize: '1.5em'
@@ -14,7 +15,6 @@ const useStyles = createUseStyles({
 
 function Cart(props) {
     const classes = useStyles();
-
     let unique = [...new Set(props.ids)]
 
     const renderCartItem = (id) => {
@@ -37,7 +37,10 @@ function Cart(props) {
             <div className={classes.cartTitle}>Košarica</div>
             {
                 unique.length ?
-                    <div>{cartItems}<hr/></div> :
+                    <div>
+                    <div>{cartItems}<hr/></div>
+                    <div>Ukupan iznos: {(props.total).toFixed(2)}</div>
+                    </div> :
                     <div className={classes.emptyCart}>Vaša košarica je prazna.</div>
             }
         </div>

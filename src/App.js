@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { createUseStyles } from 'react-jss'
+import { itemsList } from './items/itemsList'
 import Cart from './cart/Cart'
 import ItemGrid from './items/ItemGrid'
 import Header from './Header'
@@ -45,16 +46,22 @@ const useStyles = createUseStyles({
 function App() {
     const classes = useStyles()
     const [cartItems,setCartItems] = useState([]);
+    const [total,setTotal] = useState(0)
 
     const handleAddToCart = (item) => {
+        setTotal(total + item.price)
         setCartItems(oldItems => [...oldItems, item.id])
     }
 
     const handleAddItem = (i) => {
-        setCartItems(oldItems => [...oldItems,i])
+    const item = itemsList.find(item => item.id === i);
+    setTotal(total+item.price);
+    setCartItems(oldItems => [...oldItems,i])
     }
 
     const handleRemoveItem = (i) => {
+        const item = itemsList.find(item => item.id === i);
+        setTotal(total-item.price)
         let index = cartItems.lastIndexOf(i)
         let array = cartItems.slice()
         if (index > -1) {
@@ -77,6 +84,7 @@ function App() {
                     ids = {cartItems}
                     onAddItem = {(i) => handleAddItem(i)}
                     onRemoveItem = {(i) => handleRemoveItem(i)}
+                    total = {total}
                 />
             </div>
         </div>
