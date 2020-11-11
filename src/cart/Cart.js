@@ -37,7 +37,7 @@ function Cart(props) {
             <div className={classes.cartTitle}>Košarica</div>
             {
                 unique.length ?
-                    <div>{cartItems}</div> :
+                    <div>{cartItems}<hr/></div> :
                     <div className={classes.emptyCart}>Vaša košarica je prazna.</div>
             }
         </div>

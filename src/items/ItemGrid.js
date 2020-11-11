@@ -1,6 +1,6 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
-import { itemsList } from './items'
+import { itemsList } from './itemsList'
 import Item from './Item'
 
 const useStyles = createUseStyles({
