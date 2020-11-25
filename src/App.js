@@ -76,14 +76,14 @@ function App() {
         <div className={classes.bookContainer}>
             <div className={classes.items}>
                <ItemGrid 
-                   onClick = {(i) => handleAddToCart(i)}
+                   onClick = {handleAddToCart}
                />
             </div>
             <div className={classes.cart}>
                 <Cart 
                     ids = {cartItems}
-                    onAddItem = {(i) => handleAddItem(i)}
-                    onRemoveItem = {(i) => handleRemoveItem(i)}
+                    onAddItem = {handleAddItem}
+                    onRemoveItem = {handleRemoveItem}
                     total = {total}
                 />
             </div>
